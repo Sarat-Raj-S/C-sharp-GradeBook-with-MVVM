@@ -1,2 +1,2 @@
-# C-GradeBook-with-MVVM
+# C-sharp-GradeBook-with-MVVM
 A grade calculating computer application
