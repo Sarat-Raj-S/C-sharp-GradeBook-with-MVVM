@@ -11,14 +11,16 @@ namespace GradeBook
     {
         private List<double> grades;
         private static double highest_grade_class;
-        private static double highest_grade_student;
+        private double highest_grade_student;
         private static double lowest_grade_class;
-        private static double lowest_grade_student;
-        private int number_of_subj;
+        private double lowest_grade_student;
+        private int number_of_subj = 1;
+        public string name_of_student;
 
 
-        public Caliculation()
+        public Caliculation(string name_of_student)
         {
+            name_of_student = this.name_of_student;
             grades = new List<double>();
         }
         public void showstatistics()
@@ -29,10 +31,9 @@ namespace GradeBook
         public void Addgrade()
         {
             //string read_value = "a";
-            Console.WriteLine("GET THE GRADES FROM USER, CONTINUESLY SHOWING THE PREVIOUS INPUT AND AS SOON AS USER STOPS THE ENTRY, GET ASK FOR A TERMINATOR,for every subject");
+            Console.WriteLine("enter the grades scored, after completion enter 'ok' ");
             while(true)
             {
-                number_of_subj = 1;
                 Console.WriteLine($"Marks in Subject {number_of_subj}:");
                 string read_value = Console.ReadLine();
                 if (read_value != "ok") grades.Add(Convert.ToDouble(read_value));
@@ -48,8 +49,8 @@ namespace GradeBook
             {
                 result += value;
             }
-            average_grade = result/number_of_
-            Console.WriteLine($
+            average_grade = result/number_of_subj;
+            Console.WriteLine($"Average grade scored by the student : {name_of_student} is :{result}");
 
         }
         public void high_low_grade_check()
@@ -62,16 +63,16 @@ namespace GradeBook
                 {
                     Caliculation.highest_grade_class = value;
                 }
-                Console.WriteLine($"The highest grade achieved till now is  : {Caliculation.highest_grade_class} in subject:");
+                Console.WriteLine($"The highest grade in class achieved till now is  : {Caliculation.highest_grade_class} in subject:");
             }
             foreach (double value in grades)
             {
 
-                if (value > Caliculation.highest_grade_student)
+                if (value > highest_grade_student)
                 {
-                    Caliculation.highest_grade_student = value;
+                    highest_grade_student = value;
                 }
-                Console.WriteLine($"The highest among all the grades scored by student is : {Caliculation.highest_grade_student} in subject:");
+                Console.WriteLine($"The highest among all the grades scored by student is : {highest_grade_student} in subject:");
             }
             foreach (double value in grades)
             {
@@ -85,11 +86,11 @@ namespace GradeBook
             foreach (double value in grades)
             {
 
-                if (value > Caliculation.lowest_grade_student)
+                if (value > lowest_grade_student)
                 {
-                    Caliculation.lowest_grade_student = value;
+                    lowest_grade_student = value;
                 }
-                Console.WriteLine($"The lowest among all the grades scored by student is : {Caliculation.lowest_grade_student} in subject:");
+                Console.WriteLine($"The lowest among all the grades scored by student is : {lowest_grade_student} in subject:");
             }
         }
     }

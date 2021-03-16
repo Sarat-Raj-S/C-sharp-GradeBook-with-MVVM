@@ -6,9 +6,16 @@ namespace GradeBook
     {
         static void Main(string[] args)
          {
-            Caliculation grade = new Caliculation();
-            grade.Addgrade();
-            grade.showstatistics();
+            for(int i = 1; ;i++)
+            {
+                Console.WriteLine("enter name of student :");
+                string student_name = Console.ReadLine();
+                Caliculation grade = new Caliculation(student_name); 
+                grade.Addgrade();
+                grade.showstatistics();
+                Console.WriteLine("if no more sudents, enter 'null'");
+                Console.ReadLine();
+            }
 
         }
     }
